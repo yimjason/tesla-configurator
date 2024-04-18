@@ -1,0 +1,8 @@
+<div>
+    <button *ngFor="let step of steps" (click)="goToStep(step)">Step {{ step }}</button>
+</div>
+<div [ngSwitch]="step()">
+    <app-model-and-color *ngSwitchCase="1"></app-model-and-color>
+    <app-config-and-options *ngSwitchCase="2"></app-config-and-options>
+    <app-summary *ngSwitchCase="3"></app-summary>
+</div>
