@@ -50,7 +50,6 @@ export class ConfigAndOptionsComponent implements OnInit, OnDestroy {
   getOptions(): void {
     if (this.model) {
       this.vehiclesService.getOption(this.model).pipe(takeUntil(this.unsubscribe)).subscribe((data: TeslaOption) => {
-        console.log('data', data)
         this.option = data;
         this.configs = this.option.configs;
         this.prePopulateForm();
