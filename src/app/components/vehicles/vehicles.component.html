@@ -1,8 +1,13 @@
-<div>
-    <button *ngFor="let step of steps" (click)="goToStep(step)">Step {{ step }}</button>
-</div>
-<div [ngSwitch]="step()">
-    <app-model-and-color *ngSwitchCase="1"></app-model-and-color>
-    <app-config-and-options *ngSwitchCase="2"></app-config-and-options>
-    <app-summary *ngSwitchCase="3"></app-summary>
+<div class="vehicles">
+    <div class="tabs">
+        <button id="step1" (click)="goToStep(1)">Step 1</button>
+        <button id="step2" [attr.disabled]="isStep1NotCompleted ? true : null" (click)="goToStep(2)">Step 2</button>
+        <button id="step3" [attr.disabled]="isStep2NotCompleted ? true : null" (click)="goToStep(3)">Step 3</button>
+    </div>
+    <div [ngSwitch]="step">
+        <app-model-and-color *ngSwitchCase="1" [models]="models"></app-model-and-color>
+        <app-config-and-options *ngSwitchCase="2" [model]="selectedModel" [color]="selectedColor" (selectedOption)="onSelectedOption($event)"></app-config-and-options>
+        <app-summary *ngSwitchCase="3" [data]="summaryData"></app-summary>
+    </div>
+    <img *ngIf="showImage" [attr.src]="imageUrl" alt="Vehicle Image"/>
 </div>

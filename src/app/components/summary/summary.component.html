@@ -1,1 +1,10 @@
-<p>summary works!</p>
+<h2>Step 3: Summary</h2>
+<h3 *ngIf="vehicleName">Your Tesla {{ vehicleName }}</h3>
+<ul>
+    <li><b>{{ configName }}</b><span>{{ configPrice | currency }}</span></li>
+    <li><span>Range: {{ range }} miles - Max speed: {{ speed }}mph</span></li>
+    <li><b>{{ colorName }}</b><span>{{ colorPrice | currency }}</span></li>
+    <li *ngIf="hasTowHitchOption"><b>Tow Hitch Package</b><span>{{ towHitchPrice | currency }}</span></li>
+    <li *ngIf="hasYokeOption"><b>Yoke Steering Wheel Package</b><span>{{ yokePrice | currency }}</span></li>
+    <li class="total"><b>TOTAL COST</b><span>{{ total | currency }}</span></li>
+</ul>

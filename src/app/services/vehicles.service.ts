@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Model, TeslaModel, TeslaOption } from '../models/vehicles.model';
+import { Model, TeslaOption } from '../models/vehicles.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,11 +10,11 @@ export class VehiclesService {
 
   constructor(private readonly httpClient: HttpClient) { }
 
-  getOptions(id: TeslaModel): Observable<TeslaOption> {
+  getOption(id: string): Observable<TeslaOption> {
     return <Observable<TeslaOption>>this.httpClient.get(`/options/${id}`);
   }
 
-  getModels(): Observable<Model> {
-    return <Observable<Model>>this.httpClient.get('/models');
+  getModels(): Observable<Model[]> {
+    return <Observable<Model[]>>this.httpClient.get('/models');
   }
 }

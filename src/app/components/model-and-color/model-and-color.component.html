@@ -1,18 +1,14 @@
 <h2>Step 1: Choose your Model and color</h2>
 <form>
-    <label>Model:</label>
-    <select>
-        <option>Model S</option>
-        <option>Model 3</option>
-        <option>Model X</option>
-        <option>Model Y</option>
-        <option>Model C</option>
+    <label for="modelSelect">Model:</label>
+    <select id="modelSelect" (change)="onModelSelect($event)" [(ngModel)]="selectedModel" [ngModelOptions]="{standalone: true}">
+        <option disabled>Choose...</option>
+        <option *ngFor="let model of models" [attr.value]="model.code" [selected]="selectedModel === model.code">{{ model.description }}</option>
     </select>
-
-    <label>Color:</label>
-    <select>
-        <option>White</option>
-        <option>Black</option>
-        <option>Grey</option>
-    </select>
+    <ng-container *ngIf="selectedModel && selectedModel !== 'Choose...'">
+        <label for="colorSelect">Color:</label>
+        <select id="colorSelect" (change)="onColorSelect($event)" [(ngModel)]="selectedColor" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let color of colors" [attr.value]="color.code" [selected]="selectedColor === color.code">{{ color.description }}</option>
+        </select>
+    </ng-container>
 </form>

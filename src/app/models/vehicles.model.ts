@@ -1,5 +1,5 @@
-export type TeslaModel = "S" | "3" | "X" | "Y" | "C";
-export type TeslaColor = "blue" | "black" | "grey" | "white" | "red";
+export type TeslaModel = "3" | "C" | "S" | "X" | "Y";
+export type TeslaColor = "black" | "blue" | "grey" | "red" | "white";
 
 export interface Model {
     code: TeslaModel;
@@ -25,4 +25,14 @@ export interface TeslaConfig {
     range: number;
     speed: number;
     price: number; 
+}
+
+export interface SummaryData {
+    models: Model[];
+    modelCode: string | null;
+    colorCode: string | null;
+    option: TeslaOption;
+    configId: number | null;
+    towHitchOption: boolean;
+    yokeOption: boolean;
 }

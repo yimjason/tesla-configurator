@@ -1,1 +1,17 @@
-<p>config-and-options works!</p>
+<h2>Step 2: Select your config and options</h2>
+<form>
+    <label for="configSelect">Config:</label>
+    <select id="configSelect" (change)="onConfigSelect($event)" [(ngModel)]="selectedConfig" [ngModelOptions]="{standalone: true}">
+        <option disabled>Choose...</option>
+        <option *ngFor="let config of configs" [attr.value]="config.id" [selected]="selectedConfig === config.id">{{ config.description }}</option>
+    </select>
+    <p *ngIf="showDescription">Range: {{ range }} miles - Max speed: {{ speed }}mph - Cost: {{ price | currency }}</p>
+    <div *ngIf="option?.towHitch">
+        <label for="includeTow">Tow hitch?</label>
+        <input id="includeTow" type="checkbox" [(ngModel)]="isTowHitchedChecked" (change)="onTowHitchChange()" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div *ngIf="option?.yoke">
+        <label for="includeYoke">Yoke steering wheel?</label>
+        <input id="includeYoke" type="checkbox" [(ngModel)]="isYokeChecked" (change)="onYokeChange()" [ngModelOptions]="{standalone: true}">
+    </div>
+</form>
